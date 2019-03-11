@@ -24,8 +24,8 @@ namespace Claw
       void Push(bool open);
 
     private:
-      frc::Solenoid clawSolenoid{0,0};
-      frc::Solenoid pushSolenoid{0,1};
+      frc::Solenoid clawSolenoid{0, 0};
+      frc::Solenoid pushSolenoid{0, 1};
 
       rev::CANSparkMax m_leftElevator{2, rev::CANSparkMax::MotorType::kBrushless};
       rev::CANSparkMax m_rightElevator{1, rev::CANSparkMax::MotorType::kBrushless};

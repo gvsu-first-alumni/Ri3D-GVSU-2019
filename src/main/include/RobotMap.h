@@ -44,7 +44,20 @@ constexpr int kBottomRightMotor = 4;
 constexpr int kElevMotor1 = 5;
 constexpr int kElevMotor2 = 6;
 
+// Solenoids
+constexpr int kLeftHopper = 0;
+constexpr int kRightHopper = 1;
+constexpr int kClaw = -1;
+constexpr int kPusher = -1;
+
+// Camera
+constexpr int kFPSLimit = 20;
+constexpr int kResolutionX = 320;
+constexpr int kResolutionY = 240;
+
 // PID Constants
 constexpr double kP = 1.0;
 constexpr double kI = 0.0;
 constexpr double kD = 0.0;
+
+constexpr double kPI = 3.14159265;
