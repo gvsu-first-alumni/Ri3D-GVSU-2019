@@ -10,6 +10,6 @@ class HopScotchSubsystem : public frc::Subsystem {
         void GoDown();
     
     private:
-        frc::Solenoid leftSolenoid{0, 2};
-        frc::Solenoid rightSolenoid{0, 3};
+        frc::Solenoid leftSolenoid{ 0, kLeftHopper };
+        frc::Solenoid rightSolenoid{ 0, kRightHopper };
 };

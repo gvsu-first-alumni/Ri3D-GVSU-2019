@@ -48,7 +48,8 @@ constexpr int kElevMotor2 = 6;
 constexpr int kLeftHopper = 0;
 constexpr int kRightHopper = 1;
 constexpr int kClaw = -1;
-constexpr int kPusher = -1;
+constexpr int kPusherForward = 3;
+constexpr int kPusherBackwards = 2;
 
 // Camera
 constexpr int kFPSLimit = 20;
