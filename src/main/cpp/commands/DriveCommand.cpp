@@ -16,17 +16,17 @@ double alpham1 = 1 - alpha;
 
 void DriveCommand::Execute() {
     double leftValue = -1 * Robot::m_oi.driveStick.GetRawAxis(1);
-    leftValue *= leftValue;
+    //[\]leftValue *= leftValue;
     double rightValue = Robot::m_oi.driveStick.GetRawAxis(5);
-    rightValue *= rightValue;
+    //rightValue *= rightValue;
     double leftOutput = (alpha * leftValue) + (alpham1 * this->lastLeftOutput);
     double rightOutput = (alpha * rightValue) + (alpham1 * this->lastRightOutput);
     
-    if (std::abs(leftOutput) <= 0.15) {
+    if (std::abs(leftOutput) <= 0.05) {
         leftOutput = (1 * leftValue);
     }
 
-    if (std::abs(rightOutput) <= 0.15) {
+    if (std::abs(rightOutput) <= 0.05) {
         rightOutput = (1 * rightValue);
     }
 
