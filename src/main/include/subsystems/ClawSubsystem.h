@@ -31,5 +31,11 @@ namespace Claw
 
       rev::CANSparkMax m_leftElevator{2, rev::CANSparkMax::MotorType::kBrushless};
       rev::CANSparkMax m_rightElevator{1, rev::CANSparkMax::MotorType::kBrushless};
+
+      rev::CANPIDController m_leftPID;
+      rev::CANPIDController m_rightPID;
+
+      rev::CANEncoder m_leftEnc;
+      rev::CANEncoder m_rightEnc;
   };
 }

@@ -5,28 +5,30 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/UnClamp.h"
-#include "Robot.h"
+#include "commands/Delay.h"
+#include <iostream>
 
-UnClamp::UnClamp() {
-  // Use Requires() here to declare subsystem dependencies
-  Requires(Robot::m_clawSubsystem.get());
+Delay::Delay(double time) {
+  m_time = time;
 }
 
 // Called just before this Command runs the first time
-void UnClamp::Initialize() {
-  Robot::m_clawSubsystem->SetOpen();
+void Delay::Initialize()
+{
+  m_init = m_timer.GetFPGATimestamp();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void UnClamp::Execute() {}
+void Delay::Execute() {
+  std::cout << "Delaying" << std::endl;
+}
 
 // Make this return true when this Command no longer needs to run execute()
-bool UnClamp::IsFinished() { return true; }
+bool Delay::IsFinished() { return m_timer.GetFPGATimestamp() > m_init + m_time; }
 
 // Called once after isFinished returns true
-void UnClamp::End() {}
+void Delay::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void UnClamp::Interrupted() {}
+void Delay::Interrupted() {}

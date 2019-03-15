@@ -7,16 +7,9 @@
 
 #pragma once
 
-#include <frc/commands/Command.h>
+#include <frc/commands/CommandGroup.h>
 
-class Push : public frc::Command {
+class Launch : public frc::CommandGroup {
  public:
-  Push(bool open);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
-private:
-  bool m_open;
+  Launch();
 };

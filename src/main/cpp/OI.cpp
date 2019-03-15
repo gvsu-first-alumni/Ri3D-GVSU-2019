@@ -16,6 +16,7 @@
 #include "commands/Push.h"
 #include "commands/RaiseElevator.h"
 #include "commands/LowerElevator.h"
+#include "commands/Launch.h"
 
 OI::OI() {
   // Eventually, buttons will go here.
@@ -23,10 +24,9 @@ OI::OI() {
   this->ClawOpen->WhenPressed(new UnClamp());
   this->goUp->WhenPressed(new Ascend());
   this->goDown->WhenPressed(new Descend());
-  this->pusher->WhileHeld(new Push());
+  this->pusher->WhileHeld(new Push(true));
+  this->pusher->WhenReleased(new Push(false));
   this->raiseEl->WhileHeld(new RaiseElevator());
   this->lowerEl->WhenActive(new LowerElevator());
+  this->launch->WhenPressed(new Launch());
 }
-
-
-

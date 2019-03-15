@@ -9,22 +9,29 @@
 
 #include "Robot.h"
 
-Push::Push() {
+Push::Push(bool open) {
   // Use Requires() here to declare subsystem dependencies
   Requires(Robot::m_clawSubsystem.get());
+  m_open = open;
 }
 
 // Called just before this Command runs the first time
 void Push::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void Push::Execute() {}
+void Push::Execute() 
+{
+    Robot::m_clawSubsystem->Push(m_open);
+}
 
 // Make this return true when this Command no longer needs to run execute()
-bool Push::IsFinished() { return false; }
+bool Push::IsFinished() { return true; }
 
 // Called once after isFinished returns true
-void Push::End() {}
+void Push::End() 
+{
+    //Robot::m_clawSubsystem->Push(!m_open);
+}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

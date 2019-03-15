@@ -20,7 +20,7 @@ void LowerElevator::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void LowerElevator::Execute() {
-  Robot::m_clawSubsystem->SetHeight(.25); // TODO: Find value
+  Robot::m_clawSubsystem->SetHeight(0); // TODO: Find value
 }
 
 // Make this return true when this Command no longer needs to run execute()

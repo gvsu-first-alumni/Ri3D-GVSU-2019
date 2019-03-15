@@ -8,15 +8,18 @@
 #pragma once
 
 #include <frc/commands/Command.h>
+#include <frc/Timer.h>
 
-class Push : public frc::Command {
+class Delay : public frc::Command {
  public:
-  Push(bool open);
+  Delay(double time);
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
   void End() override;
   void Interrupted() override;
-private:
-  bool m_open;
+ private:
+  double m_time;
+  double m_init;
+  frc::Timer m_timer;
 };
