@@ -5,15 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/Launch.h"
-#include "commands/Push.h"
-#include "commands/UnClamp.h"
-#include "commands/Delay.h"
+#pragma once
 
-Launch::Launch() {
-  AddSequential(new UnClamp());
-  AddSequential(new Delay(.04));
-  AddSequential(new Push(true));
-  AddSequential(new Delay(.5));
-  AddSequential(new Push(false));
-}
+#include <frc/commands/Command.h>
+
+class SwitchCam : public frc::Command {
+ public:
+  SwitchCam();
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
+};

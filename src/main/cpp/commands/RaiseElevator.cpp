@@ -28,7 +28,7 @@ bool RaiseElevator::IsFinished() { return true; }
 
 // Called once after isFinished returns true
 void RaiseElevator::End() {
-  Robot::m_clawSubsystem->SetHeight(0);
+  //Robot::m_clawSubsystem->SetHeight(0);
 }
 
 // Called when another command which requires one or more of the same

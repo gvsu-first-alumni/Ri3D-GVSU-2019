@@ -5,32 +5,32 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/LowerElevator.h"
+#include "commands/SwitchCam.h"
 #include "Robot.h"
 
-LowerElevator::LowerElevator() {
+SwitchCam::SwitchCam() {
   // Use Requires() here to declare subsystem dependencies
-  Requires(Robot::m_clawSubsystem.get());
+  Requires(Robot::m_cameraSubsystem.get());
 }
 
 // Called just before this Command runs the first time
-void LowerElevator::Initialize() {
-
+void SwitchCam::Initialize() {
+  if (Robot::m_cameraSubsystem->IsClawCam())
+    Robot::m_cameraSubsystem->UseLineCamera();
+  else
+  
+    Robot::m_cameraSubsystem->UseClawCamera();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void LowerElevator::Execute() {
-  Robot::m_clawSubsystem->SetHeight(0); // TODO: Find value
-}
+void SwitchCam::Execute() {}
 
 // Make this return true when this Command no longer needs to run execute()
-bool LowerElevator::IsFinished() { return true; }
+bool SwitchCam::IsFinished() { return true; }
 
 // Called once after isFinished returns true
-void LowerElevator::End() {
-  //Robot::m_clawSubsystem->SetHeight(0);
-}
+void SwitchCam::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void LowerElevator::Interrupted() {}
+void SwitchCam::Interrupted() {}

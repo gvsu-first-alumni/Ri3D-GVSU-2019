@@ -37,11 +37,13 @@ namespace Camera
 
     void CameraSubsystem::UseClawCamera()
     {
+        m_clawCam = true;
         m_cameraServer.SetSource(m_clawCamera);
     }
 
     void CameraSubsystem::UseLineCamera()
     {
+        m_clawCam = false;
         m_cameraServer.SetSource(m_lineCamera);
     }
 } // namespace CameraSubsystem

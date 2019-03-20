@@ -25,6 +25,7 @@ class OI {
   frc::JoystickButton* raiseEl = new frc::JoystickButton(&this->driveStick, 6);
   frc::JoystickButton* lowerEl = new frc::JoystickButton(&this->driveStick, 5);
   frc::JoystickButton* launch = new frc::JoystickButton(&this->driveStick, 4);
+  frc::JoystickButton* switchCam = new frc::JoystickButton(&this->driveStick, 7);
 
   //  Button functions for controller
   frc::JoystickButton* HatchOpen;   //Set Claw position to prepare to pick up Hatch
