@@ -9,7 +9,24 @@
 
 namespace Claw
 {
-ClawSubsystem::ClawSubsystem() : Subsystem("Claw Subsystem") {}
+ClawSubsystem::ClawSubsystem() : Subsystem("Claw Subsystem"),
+    m_leftPID(m_leftElevator.GetPIDController()), m_rightPID(m_rightElevator.GetPIDController()),
+    m_leftEnc(m_leftElevator.GetEncoder()), m_rightEnc(m_rightElevator.GetEncoder())
+{
+    m_leftPID.SetP(kP);
+    m_leftPID.SetI(kI);
+    m_leftPID.SetD(kD);
+    m_leftPID.SetIZone(100);
+    m_leftPID.SetFF(0);
+    m_leftPID.SetOutputRange(-100, 100);
+
+    m_rightPID.SetP(kP);
+    m_rightPID.SetI(kI);
+    m_rightPID.SetD(kD);
+    m_rightPID.SetIZone(100);
+    m_rightPID.SetFF(0);
+    m_rightPID.SetOutputRange(-100, 100);
+}
 
 void ClawSubsystem::InitDefaultCommand()
 {
@@ -28,8 +45,8 @@ void ClawSubsystem::SetOpen(){
 void ClawSubsystem::SetHeight(int height)
 {
     // Sometimes it don't be like it is
-    m_leftElevator.Set(height);
-    m_rightElevator.Set(height);
+    m_leftPID.SetReference(height, rev::ControlType::kPosition);
+    m_rightPID.SetReference(height, rev::ControlType::kPosition);
 }
 
 void ClawSubsystem::Push(bool open) {

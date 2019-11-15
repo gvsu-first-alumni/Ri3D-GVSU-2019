@@ -5,28 +5,29 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/UnClamp.h"
-#include "Robot.h"
+#include "commands/ToggleSafety.h"
 
-UnClamp::UnClamp() {
-  // Use Requires() here to declare subsystem dependencies
-  Requires(Robot::m_clawSubsystem.get());
+#include "Robot.h"
+#include "RobotMap.h"
+
+ToggleSafety::ToggleSafety() {
+  Requires(Robot::driveSubsystem.get());
 }
 
 // Called just before this Command runs the first time
-void UnClamp::Initialize() {
-  Robot::m_clawSubsystem->SetOpen();
+void ToggleSafety::Initialize() {
+  Robot::driveSubsystem.get()->ToggleSafetyModeStatus();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void UnClamp::Execute() {}
+void ToggleSafety::Execute() {}
 
 // Make this return true when this Command no longer needs to run execute()
-bool UnClamp::IsFinished() { return true; }
+bool ToggleSafety::IsFinished() { return true; }
 
 // Called once after isFinished returns true
-void UnClamp::End() {}
+void ToggleSafety::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void UnClamp::Interrupted() {}
+void ToggleSafety::Interrupted() {}

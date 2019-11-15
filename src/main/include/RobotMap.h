@@ -52,9 +52,9 @@ constexpr int kElevMotor2 = 6;
 // Solenoids
 constexpr int kLeftHopper = 0;
 constexpr int kRightHopper = 1;
-constexpr int kClaw = 4;
-constexpr int kPusherForward = 3;
-constexpr int kPusherBackwards = 2;
+constexpr int kClawForward = 3;
+constexpr int kClawBackward= 2;
+constexpr int kPusher = 4;
 
 // Camera
 constexpr int kFPSLimit = 20;

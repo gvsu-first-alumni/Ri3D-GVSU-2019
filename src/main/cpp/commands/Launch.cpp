@@ -5,18 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "commands/Launch.h"
+#include "commands/Push.h"
+#include "commands/UnClamp.h"
+#include "commands/Delay.h"
 
-#include <frc/commands/Command.h>
-
-class Push : public frc::Command {
- public:
-  Push(bool open);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
-private:
-  bool m_open;
-};
+Launch::Launch() {
+  AddSequential(new UnClamp());
+  AddSequential(new Delay(.04));
+  AddSequential(new Push(true));
+  AddSequential(new Delay(.5));
+  AddSequential(new Push(false));
+}

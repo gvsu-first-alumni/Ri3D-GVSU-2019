@@ -9,14 +9,12 @@
 
 #include <frc/commands/Command.h>
 
-class Push : public frc::Command {
+class SwitchCam : public frc::Command {
  public:
-  Push(bool open);
+  SwitchCam();
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
   void End() override;
   void Interrupted() override;
-private:
-  bool m_open;
 };

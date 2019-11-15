@@ -17,6 +17,8 @@
 #include "commands/RaiseElevator.h"
 #include "commands/LowerElevator.h"
 #include "commands/ToggleSafety.h"
+#include "commands/Launch.h"
+#include "commands/SwitchCam.h"
 
 OI::OI() {
   // Eventually, buttons will go here.
@@ -24,11 +26,11 @@ OI::OI() {
   this->ClawOpen->WhenPressed(new UnClamp());
   this->goUp->WhenPressed(new Ascend());
   this->goDown->WhenPressed(new Descend());
-  this->pusher->WhileHeld(new Push());
+  this->pusher->WhileHeld(new Push(true));
+  this->pusher->WhenReleased(new Push(false));
   this->raiseEl->WhileHeld(new RaiseElevator());
   this->lowerEl->WhenActive(new LowerElevator());
   this->safety->ToggleWhenPressed(new ToggleSafety());
+  this->launch->WhenPressed(new Launch());
+  this->switchCam->WhenPressed(new SwitchCam());
 }
-
-
-

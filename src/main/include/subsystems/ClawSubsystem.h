@@ -26,10 +26,16 @@ namespace Claw
       void Push(bool open);
 
     private:
-      frc::Solenoid clawSolenoid{ 0, 4 };
-      frc::DoubleSolenoid pushSolenoid{ 3, 2 };
+      frc::Solenoid clawSolenoid{ 0, 4 };               //Pusher should only be powered out to kick ball
+      frc::DoubleSolenoid pushSolenoid{ 3, 2 };         //Claw should be powered in and out, not pusher
 
       rev::CANSparkMax m_leftElevator{2, rev::CANSparkMax::MotorType::kBrushless};
       rev::CANSparkMax m_rightElevator{1, rev::CANSparkMax::MotorType::kBrushless};
+
+      rev::CANPIDController m_leftPID;
+      rev::CANPIDController m_rightPID;
+
+      rev::CANEncoder m_leftEnc;
+      rev::CANEncoder m_rightEnc;
   };
 }

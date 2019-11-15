@@ -5,28 +5,32 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/UnClamp.h"
+#include "commands/SwitchCam.h"
 #include "Robot.h"
 
-UnClamp::UnClamp() {
+SwitchCam::SwitchCam() {
   // Use Requires() here to declare subsystem dependencies
-  Requires(Robot::m_clawSubsystem.get());
+  Requires(Robot::m_cameraSubsystem.get());
 }
 
 // Called just before this Command runs the first time
-void UnClamp::Initialize() {
-  Robot::m_clawSubsystem->SetOpen();
+void SwitchCam::Initialize() {
+  if (Robot::m_cameraSubsystem->IsClawCam())
+    Robot::m_cameraSubsystem->UseLineCamera();
+  else
+  
+    Robot::m_cameraSubsystem->UseClawCamera();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void UnClamp::Execute() {}
+void SwitchCam::Execute() {}
 
 // Make this return true when this Command no longer needs to run execute()
-bool UnClamp::IsFinished() { return true; }
+bool SwitchCam::IsFinished() { return true; }
 
 // Called once after isFinished returns true
-void UnClamp::End() {}
+void SwitchCam::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void UnClamp::Interrupted() {}
+void SwitchCam::Interrupted() {}
