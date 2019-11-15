@@ -33,7 +33,7 @@ void ClawSubsystem::SetHeight(int height)
 }
 
 void ClawSubsystem::Push(bool open) {
-    pushSolenoid.Set(open);
+    pushSolenoid.Set(open ? frc::DoubleSolenoid::Value::kForward : frc::DoubleSolenoid::Value::kReverse);
 }
 
 // Put methods for controlling this subsystem

@@ -35,6 +35,11 @@ constexpr int kLTrigger = 6;
 constexpr int kLBunmper = 4;
 constexpr int kRTrigger = 7;
 constexpr int kRBumper = 5;
+constexpr int kSafetyToggle = 6;
+
+// Safety
+constexpr float kSafetyOn = -.65;
+constexpr float kSafetyOff = -.89; //-.67
 
 //Definition of motors on robot (6 motors)
 constexpr int kTopLeftMotor = 1;
@@ -47,7 +52,7 @@ constexpr int kElevMotor2 = 6;
 // Solenoids
 constexpr int kLeftHopper = 0;
 constexpr int kRightHopper = 1;
-constexpr int kClaw = -1;
+constexpr int kClaw = 4;
 constexpr int kPusherForward = 3;
 constexpr int kPusherBackwards = 2;
 

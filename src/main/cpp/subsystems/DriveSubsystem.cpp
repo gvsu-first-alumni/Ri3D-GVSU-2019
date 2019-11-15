@@ -7,6 +7,7 @@ DriveSubsystem::DriveSubsystem() : frc::Subsystem("DriveSubsystem") {
     this->headingOffset = 0;
     this->backRight.SetInverted(true);
     this->frontRight.SetInverted(true);
+    this->m_safetyMode = false;
 }
 
 void DriveSubsystem::InitDefaultCommand() {
@@ -14,6 +15,8 @@ void DriveSubsystem::InitDefaultCommand() {
 }
 
 void DriveSubsystem::TankDrive(double left, double right) {
+    left *= GetSafetyModeStatus() ? .5 : 1;
+    right *= GetSafetyModeStatus() ? .5 : 1;
     this->robotDrive.TankDrive(left * LIMITER, right * LIMITER);
 }
 
@@ -80,4 +83,20 @@ double DriveSubsystem::GetRightPosition() {
 
 AHRS* DriveSubsystem::GetNavX() {
     return &this->navX;
+}
+
+bool DriveSubsystem::GetSafetyModeStatus() {
+    return m_safetyMode;
+}
+
+void DriveSubsystem::SetSafetyModeStatus(bool safetyMode) {
+    this->m_safetyMode = safetyMode;
+}
+
+void DriveSubsystem::ToggleSafetyModeStatus() {
+    this->m_safetyMode = !this->m_safetyMode;
+}
+
+void DriveSubsystem::SetLED(float value) {
+    m_leds.Set(value);
 }

@@ -15,26 +15,28 @@ double alpha = .55; //0.5 //0.74;
 double alpham1 = 1 - alpha;
 
 void DriveCommand::Execute() {
+    if (Robot::driveSubsystem->GetSafetyModeStatus()) {
+        Robot::driveSubsystem->SetLED(kSafetyOn);
+    } else {
+        Robot::driveSubsystem->SetLED(kSafetyOff);
+    }
+
     double leftValue = -1 * Robot::m_oi.driveStick.GetRawAxis(1);
-    leftValue *= leftValue;
     double rightValue = Robot::m_oi.driveStick.GetRawAxis(5);
-    rightValue *= rightValue;
-    double leftOutput = (alpha * leftValue) + (alpham1 * this->lastLeftOutput);
-    double rightOutput = (alpha * rightValue) + (alpham1 * this->lastRightOutput);
     
-    if (std::abs(leftOutput) <= 0.15) {
-        leftOutput = (1 * leftValue);
+    if (std::abs(rightValue) <= 0.10) {
+        leftValue = (1 * leftValue);
     }
 
-    if (std::abs(rightOutput) <= 0.15) {
-        rightOutput = (1 * rightValue);
+    if (std::abs(rightValue) <= 0.10) {
+        rightValue = (1 * rightValue);
     }
 
-    Robot::driveSubsystem->TankDrive(1 * leftOutput, 1 * rightOutput);
-    std::cout << leftOutput << " " << rightOutput << std::endl;
+    Robot::driveSubsystem->TankDrive(leftValue, rightValue);
+    std::cout << leftValue << " " << rightValue << std::endl;
 
-    this->lastLeftOutput = leftOutput;
-    this->lastRightOutput = rightOutput;
+    this->lastLeftOutput = leftValue;
+    this->lastRightOutput = rightValue;
 }
 
 // Make this return true when this Command no longer needs to run execute()

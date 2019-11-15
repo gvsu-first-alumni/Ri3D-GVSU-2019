@@ -28,6 +28,12 @@ class DriveSubsystem : public frc::Subsystem {
   double GetLeftPosition();
   double GetRightPosition();
 
+  void SetLED(float value);
+
+  bool GetSafetyModeStatus();
+  void SetSafetyModeStatus(bool);
+  void ToggleSafetyModeStatus();
+
  private:
   rev::CANSparkMax frontLeft{6, rev::CANSparkMax::MotorType::kBrushless};
   rev::CANSparkMax backLeft{5, rev::CANSparkMax::MotorType::kBrushless};
@@ -37,6 +43,11 @@ class DriveSubsystem : public frc::Subsystem {
   frc::SpeedControllerGroup right{frontRight, backRight};
   frc::DifferentialDrive robotDrive{left, right};
   AHRS navX{frc::SPI::Port::kMXP};
+
+  frc::Spark m_leds{0};
+
+  // Safety
+  bool m_safetyMode;
 
   int leftOffset;
   int rightOffset;

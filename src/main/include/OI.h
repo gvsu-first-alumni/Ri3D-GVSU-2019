@@ -10,6 +10,8 @@
 #include <frc/Joystick.h>     //Driving w/ Joystick
 #include <frc/buttons/JoystickButton.h>
 
+#include "RobotMap.h"
+
 class OI {
  public:
   OI();
@@ -21,10 +23,11 @@ class OI {
 	frc::JoystickButton* ClawClose = new frc::JoystickButton(&this->driveStick, 2);
   frc::JoystickButton* goUp = new frc::JoystickButton(&this->driveStick, 9);
 	frc::JoystickButton* goDown = new frc::JoystickButton(&this->driveStick, 10);
-  frc::JoystickButton* pusher = new frc::JoystickButton(&this->driveStick, 6);
+  frc::JoystickButton* pusher = new frc::JoystickButton(&this->driveStick, 2);
   frc::JoystickButton* raiseEl = new frc::JoystickButton(&this->driveStick, 6);
   frc::JoystickButton* lowerEl = new frc::JoystickButton(&this->driveStick, 5);
-
+  frc::JoystickButton* safety = new frc::JoystickButton(&this->driveStick, kSafetyToggle);
+  
   //  Button functions for controller
   frc::JoystickButton* HatchOpen;   //Set Claw position to prepare to pick up Hatch
   frc::JoystickButton* HatchClose;  //Set Claw position to secure hatch
